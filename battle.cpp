@@ -17,7 +17,8 @@ int main()
     std::cin >> level;
     s.SetCardGrade(level);
     s.PrintInfo();
-    std::cout << s.Life();
+    std::cout << s.Life() << std::endl;
 
+    system("pause");
     return 0;
 }

@@ -29,14 +29,17 @@ std::string Shikigami::Life()
 
 void Shikigami::SetCardGrade(unsigned short int level)
 {
-    // 升级，并且随着等级的提升升级星级
     (level < 1 || level > 40) ?: (level_ = level); // 三目运算符只能缺省中间操作数
     // 等级每到达20/25/30/35可提升1星级
-    for (int diff = level_ - 21, i = diff / 5; diff >= 0 && i >= 0; i--) // 当等级超过可升星阈值后，才能提升星级
+    level_ - 21 < 0 ? star_ = 2 : star_ = (level_ - 21) / 5 + 3; // 当等级超过可升星阈值后，才能提升星级
+
+    // 升级，并且随着等级的提升升级星级
+    /* 只适用于初始星级为2、一步步升级的情况
+    for (int diff = level_ - 21, i = diff / 5; diff >= 0 && i >= 0; i--) // "diff>=0"用来防止"-5<diff<0"导致"i=0"的情况
     {
         star_++;
     }
-    // 降级，并且随着等级的下降降低星级
+    */
 };
 
 void Shikigami::SetProperity(double attack, double health, double defend, double speed, double cirtical)
