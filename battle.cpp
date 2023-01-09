@@ -1,4 +1,5 @@
-#include "shikigami.cpp"
+#include <iostream>
+#include "shikigami.h"
 
 int main()
 {
@@ -16,6 +17,9 @@ int main()
     std::cout << "Upgrade the level? Input a number if yes (1~40): ";
     std::cin >> level;
     s.SetCardGrade(level);
+    s++;
+    s.PrintInfo();
+    ++s;
     s.PrintInfo();
     std::cout << s.Life() << std::endl;
 

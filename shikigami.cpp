@@ -1,3 +1,4 @@
+#include <iostream>
 #include "shikigami.h"
 
 Shikigami::Shikigami(const std::string name, unsigned short int rare = 0) // 给定式神名，构造一个式神
@@ -10,21 +11,6 @@ Shikigami::Shikigami(const std::string name, unsigned short int rare = 0) // 给
     speed_ = 100;
     critical_ = 0;
     Shikigami::ConvRarity(rare);
-};
-
-void Shikigami::PrintInfo()
-{
-    std::cout << "shikigami name: " << name_ << std::endl;
-    Shikigami::ShowRarity(); // 这里不加类作用域也可以，因为两个函数在同一文件中
-    Shikigami::ShowStar();
-    std::cout << "level: " << level_ << std::endl;
-}
-
-std::string Shikigami::Life()
-{
-    std::string life;
-    (health_ <= 0) ? life = "dead" : life = "alive";
-    return life;
 };
 
 void Shikigami::SetCardGrade(unsigned short int level)
@@ -48,6 +34,34 @@ void Shikigami::SetProperity(double attack, double health, double defend, double
     {
     }
 };
+
+void Shikigami::PrintInfo()
+{
+    std::cout << "shikigami name: " << name_ << std::endl;
+    Shikigami::ShowRarity(); // 这里不加类作用域也可以，因为两个函数在同一文件中
+    Shikigami::ShowStar();
+    std::cout << "level: " << level_ << std::endl;
+}
+
+std::string Shikigami::Life()
+{
+    std::string life;
+    (health_ <= 0) ? life = "dead" : life = "alive";
+    return life;
+};
+
+Shikigami &Shikigami::operator++()
+{
+    level_++; // 前置++i自增，先自增++再返回i
+    return *this;
+}
+
+Shikigami Shikigami::operator++(int)
+{
+    Shikigami temp = *this; // 后置i++自增，先返回i再++
+    level_++;
+    return temp;
+}
 
 void Shikigami::ShowStar()
 {

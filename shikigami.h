@@ -1,4 +1,3 @@
-#include <iostream>
 #include <string>
 
 class Shikigami
@@ -30,9 +29,13 @@ public:
 
     void SetCardGrade(unsigned short int level);
     void SetProperity(double attack, double health, double defend, double speed, double cirtical);
+    void GetStar();
     void PrintInfo();
     std::string Life();
     double Fight();
+
+    Shikigami &operator++();   // ++i
+    Shikigami operator++(int); // i++
 
 protected:
     void ShowStar();
