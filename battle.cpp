@@ -1,4 +1,3 @@
-#include <iostream>
 #include "shikigami.h"
 
 int main()

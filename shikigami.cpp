@@ -1,4 +1,3 @@
-#include <iostream>
 #include "shikigami.h"
 
 Shikigami::Shikigami(const std::string name, unsigned short int rare = 0) // 给定式神名，构造一个式神
